@@ -62,11 +62,16 @@ def parse_result(address, data):
             "raw": data
         }
 
-    # fallback format: {'total': '0', 'detail': {...}}
+    # fallback format: {'total': '0' | '1', 'detail': {...}}
     if isinstance(data, dict) and "detail" in data and "total" in data:
+        t = data.get("total")
+        try:
+            eligible_val = int(t) > 0
+        except Exception:
+            eligible_val = bool(t)
         return {
             "address": address,
-            "eligible": False,   # fallback 格式一定是 0
+            "eligible": eligible_val,
             "status": "fallback_format",
             "raw": data
         }
