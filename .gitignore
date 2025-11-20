@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# 虚拟环境
+venv/
+.venv/
+
+# 本地配置/敏感数据
+wallets.txt
+proxy.txt
+.env
+
+# 运行输出
+eligibility_result.jsonl
+*.log
+*.xlsx
+
+# IDE
+.vscode/
+.idea/
